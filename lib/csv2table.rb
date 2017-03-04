@@ -1,32 +1,15 @@
 #!/usr/bin/env ruby
 require 'csv'
 
-longestRow = 0
+output = ""
 
-s = ""
-CSV.foreach(ARGV[0]) do |row1|
-   longestRow = row1.size if row1.size > longestRow
-   
-   row1.each { |x|
-      s <<  "| "
-      s << x 
-      s << " "
-   }
-   s << "|\n"
-  
-end
+filename = ARGV[0]
 
-# Only support blank headers for now
-header = "" 
-(1..longestRow).each do |n|
-    header << "|   "
-end
-header << "|\n"
 
-(1..longestRow).each do |n|
-    header << "|---"
-end
-header << "|\n"
+arr_of_arrs = CSV.read(filename)
 
-print header
-print s
+rows = arr_of_arrs.length
+columns = (arr_of_arrs.max_by {|x| x.length }).length 
+largestValue = arr_of_arrs.flatten.compact.max_by(&:length)
+
+puts largestValue

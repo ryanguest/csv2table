@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+require 'csv'
+
+longestRow = 0
+
+s = ""
+
+filename = ARGV[0]
+#csvData = CSV.foreach(ARGV[0])
+arr_of_arrs = CSV.read(filename)
+rows = puts arr_of_arrs.length
+columns = (arr_of_arrs.max_by {|x| x.length }).length 
+maxColumnLengths = Array.new(columns)
+
+(0..columns-1).each { |x|
+   puts x
+}
+
+
+arr_of_arrs.each { |x| 
+   #puts x.length
+   #puts "0000" 
+}
+
+print s
